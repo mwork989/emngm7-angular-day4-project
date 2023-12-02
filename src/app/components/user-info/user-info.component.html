@@ -1,0 +1,106 @@
+<!-- Object data binding -->
+<h2>User Info Component</h2>
+<!--
+<button (click)="toggleTable()">Toggle Table</button>
+<table class="table" >
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Age</th>
+      <th scope="col">City</th>
+      <th scope="col">Code</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr >
+      <td>
+        <input *ngIf="!isUserTableRowVisible" type="text" placeholder="enter the value" [(ngModel)]="user.name"/>
+        <span *ngIf="isUserTableRowVisible">{{ user.name }}</span>
+      </td>
+      <td>
+        <input *ngIf="!isUserTableRowVisible" type="text" placeholder="enter the value"  [(ngModel)]="user.age"/>
+        <span *ngIf="isUserTableRowVisible"> {{ user.age }}</span>
+      </td>
+      <td>
+        <input *ngIf="!isUserTableRowVisible" type="text" placeholder="enter the value" [(ngModel)]="user.address.city" />
+        <span *ngIf="isUserTableRowVisible">{{ user.address.city }}</span>
+      </td>
+      <td>
+        <input *ngIf="!isUserTableRowVisible" type="text" placeholder="enter the value" [(ngModel)]="user.address.code"/>
+        <span *ngIf="isUserTableRowVisible">{{ user.address.code }}</span>
+      </td>
+      <td>
+        <button class="btn btn-primary" (click)="editUser()">Edit User</button>
+        <button class="btn btn-success" (click)="updateUser()">Update User</button>
+      </td>
+    </tr>
+  </tbody>
+</table> -->
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Age</th>
+      <th scope="col">City</th>
+      <th scope="col">Code</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <ng-container
+        *ngIf="isUserTableRowVisible; then template1; else template2"
+      ></ng-container>
+      <ng-template #template1>
+        <td>
+          <span>{{ user.name }}</span>
+        </td>
+        <td>
+          <span>{{ user.age }}</span>
+        </td>
+        <td>
+          <span>{{ user.address.city }}</span>
+        </td>
+        <td>
+          <span>{{ user.address.code }}</span>
+        </td>
+      </ng-template>
+      <ng-template #template2>
+        <td>
+          <input
+            type="text"
+            placeholder="enter the value"
+            [(ngModel)]="user.name"
+          />
+        </td>
+        <td>
+          <input
+            type="text"
+            placeholder="enter the value"
+            [(ngModel)]="user.age"
+          />
+        </td>
+        <td>
+          <input
+            type="text"
+            placeholder="enter the value"
+            [(ngModel)]="user.address.city"
+          />
+        </td>
+        <td>
+          <input
+            type="text"
+            placeholder="enter the value"
+            [(ngModel)]="user.address.code"
+          />
+        </td>
+      </ng-template>
+      <td>
+        <button class="btn btn-primary" (click)="editUser()">Edit User</button>
+        <button class="btn btn-success" (click)="updateUser()">Update User</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

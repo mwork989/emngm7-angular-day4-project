@@ -1,0 +1,32 @@
+<h2>Stock Details Component</h2>
+
+<table class="table" >
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Stock Name</th>
+        <th scope="col">Stock Market Cap</th>
+        <th scope="col">Stock Market Sector</th>
+        <th scope="col">Release Date</th>
+        <th scope="col">Symbol</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr  *ngFor="let record of stockRecords; let i = index" [ngSwitch]="record.symbol">
+            <td>{{ record.id }}</td>
+            <td>{{ record.stockName }}</td>
+            <td>{{ record.stockMarketCap }}</td>
+            <td>{{ record.stockMSector }}</td>
+            <td>{{ record.releaseDate }}</td>
+            <td *ngSwitchCase="'BIOS'">Hold{{ record.symbol }}</td>
+            <td *ngSwitchCase="'RIBT'">Sell{{ record.symbol }}</td>
+            <td *ngSwitchDefault>{{ record.symbol }}</td>
+            <td>
+                <button class="btn btn-success">Edit</button>
+                <button class="btn btn-danger">Update</button>
+            </td>
+        </tr>
+
+    </tbody>
+</table>

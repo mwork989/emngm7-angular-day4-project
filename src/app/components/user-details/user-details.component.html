@@ -1,0 +1,23 @@
+<!-- ARray data binding -->
+<h2>User Details Component</h2>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Age</th>
+          <th scope="col">City</th>
+          <th scope="col">Code</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of userRecords;let i=index;">
+            <td>{{i+1}}</td>
+            <td>{{user.name}}</td>
+            <td>{{user.age}}</td>
+            <td>{{user.address.city}}</td>
+            <td>{{user.address.code}}</td>
+        </tr>
+       
+      </tbody>
+</table>
